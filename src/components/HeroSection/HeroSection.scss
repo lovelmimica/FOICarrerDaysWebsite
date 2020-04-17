@@ -1,0 +1,66 @@
+.HeroSection{
+    &-Container{
+        display: flex;
+        justify-content: center;
+        background: {
+            position: center;
+            image: url("../../assets/imges/event.jpg");
+            color: rgba(0, 0, 0, 0.69);
+            }
+        }
+    
+    &-Data{
+        padding: 15px 80px 15px 80px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: {
+            top: 100px;
+            right: auto;
+            bottom: 100px;
+            left: auto;
+        }
+        border-radius: 15px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+    }
+
+    &-Name{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    
+    &-Host{
+        color: #c59613;
+        font-size: 30px;
+        margin: {
+            bottom: 10px;
+            top: 0px;
+        }
+        font-weight: 500;
+    }
+    
+    &-Dates{
+        font-size: 25px;
+    }
+    
+    &-ApplyBtn{
+        background-color: #c59613;
+        transition: 1s background-color;
+        font: inherit;
+        padding: 0px 25px 0px 25px;
+        border-radius: 10px;
+        line-height: 40px;
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+    }
+    
+    &-ApplyBtn:hover{
+        background-color: #c59613bd;
+        transition: 1s background-color;
+    }
+}
+

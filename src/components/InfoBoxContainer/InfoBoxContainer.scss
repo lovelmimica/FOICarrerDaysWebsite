@@ -1,0 +1,21 @@
+.InfoBoxContainer{
+    display: flex;
+    justify-content: center;
+
+    &-Grid{
+        @media (min-width: 700px){
+            display: grid;
+            max-width: 1024px;
+            grid-template-columns: auto auto auto;
+        }
+        @media (max-width: 700px){
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        @media (max-width: 400px){
+            display: grid;
+            grid-template-columns: auto;
+        }
+    }
+}
+
