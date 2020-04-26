@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Progress from 'rsup-progress';
 
 //Components
 import Card from '../components/Card/Card';
@@ -7,6 +8,7 @@ import DescriptionSection from '../components/DescriptionSection/DescriptionSect
 import CardContainer from '../components/CardContainer/CardContainer';
 import Footer from '../components/LastYearSection/LastYearSection';
 
+
 //Images
 import ImgAbout from '../assets/imges/about.jpg';
 import ImgSpeakers from '../assets/imges/speakers.jpg';
@@ -14,6 +16,12 @@ import ImgAgenda from '../assets/imges/calendar.jpg';
 import ImgPartner from '../assets/imges/partner.jpg';
 
 const Home = () => {
+    useEffect(() => {
+        let progress = new Progress();
+        progress.start();
+        setTimeout(() => { progress.end(); }, 2000);
+    });
+
     return(
         <div>
             <HeroSection />

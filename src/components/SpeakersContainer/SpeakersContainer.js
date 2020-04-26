@@ -1,62 +1,68 @@
-import React from 'react';
-import './SpeakersContainer.scss';
+import React, { useEffect, useState } from 'react';
+import SpeakersData from '../../lib/speakers.js';
+import {Title} from './SpeakersConteinerStyle.js';
+
 
 //Components
 import InfoBox from '../InfoBox/InfoBox';
+import SearchBar from '../SearchBar/SearchBar';
+import LoaderContainer from '../LoaderContainer/LoaderContainer';
+import InfoBoxContainer from '../InfoBoxContainer/InfoBoxContainer';
 
 //Images
 import ImgSpeakerIcon from '../../assets/imges/speakers-icon.png'; 
-import InfoBoxContainer from '../InfoBoxContainer/InfoBoxContainer';
 
-const SpeakersContainer = () => {
+const SpeakersContainer = (props) => {
+    const [downloadFinished, setDownloadFinished] = useState(false);
+    const [speakers, setSpeakers] = useState(0);
+    const [allSpeakers, setAllSpeakers] = useState(SpeakersData);
+
+    useEffect(() => {
+        //TOD: Fetch real data
+        setTimeout(() =>{
+            console.log("Download finished");
+            setSpeakers(SpeakersData);
+            setDownloadFinished(true);
+        }, 1000);
+    }, []);
+
+    const searchSpeakers = (query) => {
+        let filteredSpeakers = new Array();
+        allSpeakers.forEach(element => {
+            if(element.title.toLowerCase().includes(query.toLowerCase())){
+                filteredSpeakers.push(element);
+            }
+        });
+        setSpeakers(filteredSpeakers);
+    }
+
     return(
-        <section>
-            <h2 className="SpeakersContainer-Title">Sudionici</h2>
-            <InfoBoxContainer>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="John Bach" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="Sebastian Bach" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="Johan Franck" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="Johan Speck" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="Joe Boe" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>
-                <InfoBox className="SpeakersContainer-InfoBox" 
-                            imageTitle={ImgSpeakerIcon} 
-                            altTitle="Speaker Icon" 
-                            title="El Bow" 
-                            excerpt="Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one."
-                            joinBtnLabel="Prati sudionika">                        
-                </InfoBox>                    
-            </InfoBoxContainer>
-        </section>
+        <>
+        {downloadFinished == false ?
+            <section>
+                <Title>Sudionici</Title>
+                <SearchBar placeholder='Pretraži sudionike...' doSearch={searchSpeakers} disabled='true' />
+                <LoaderContainer />
+            </section>
+        :
+            <section>
+                <Title>Sudionici</Title>
+                <SearchBar placeholder='Pretraži sudionike...' doSearch={searchSpeakers} />
+                <InfoBoxContainer>
+                    {speakers.map((speaker, index) => (
+                        <InfoBox 
+                        key={index}
+                        imageTitle={ImgSpeakerIcon} 
+                        altTitle="Speaker Icon" 
+                        title={speaker.title}
+                        excerpt={speaker.about}
+                        joinBtnLabel="Prati sudionika" >
+                    </InfoBox>     
+                    ))}  
+                </InfoBoxContainer>
+            </section>
+        }
+        </>
     );
 }
 

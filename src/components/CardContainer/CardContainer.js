@@ -1,12 +1,12 @@
 import React from 'react';
-import "./CardContainer.scss";
+import {CardContainer} from './CardContainerStyle.js';
 
 const CardSection = (props) => {
     return(
-        <section className="CardSection">
-            <div className="CardSection-Container">
+        <section>
+            <CardContainer>
                 {props.children}
-            </div>
+            </CardContainer>
         </section>
     );
 }

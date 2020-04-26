@@ -4,8 +4,11 @@ import React from 'react';
 import SpeakersContainer from '../components/SpeakersContainer/SpeakersContainer';
 
 const Speakers = () => {
+    
     return (
-        <SpeakersContainer class="SpeakersContainer" />
+        <>
+        <SpeakersContainer className="SpeakersContainer"  />
+        </>
     );
 }
 

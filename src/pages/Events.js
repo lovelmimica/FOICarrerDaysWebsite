@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //Components
 import EventsContainer from '../components/EventsContainer/EventsContainer';
@@ -6,7 +6,7 @@ import EventsContainer from '../components/EventsContainer/EventsContainer';
 
 const Events = () => {
     return (
-        <EventsContainer class="EventsContainer" />
+        <EventsContainer className="EventsContainer" />
     );
 }
 

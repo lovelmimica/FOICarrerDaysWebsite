@@ -1,22 +1,21 @@
 import React from 'react';
-import './InfoBox.scss';
-
+import {InfoBoxWrapper, Title, IconContainer, Icon, Content, Excerpt, Footer, JoinButton} from './InfoBoxStyle.js';
 
 const InfoBox = (props) => {
     return(
-        <div className="InfoBox">
-             <div className="InfoBox-Title">
-                <div className="InfoBox-IconContainer">
-                    <img src={props.imageTitle} alt={props.altTitle} />
-                </div>
+        <InfoBoxWrapper>
+             <Title>
+                <IconContainer>
+                    <Icon src={props.imageTitle} alt={props.altTitle} />
+                </IconContainer>
                 <span>{props.title}</span>
-            </div>
-            <div className="InfoBox-Content">{props.children}</div>
-            <p className="InfoBox-Excerpt">{props.excerpt}</p>
-            <div className="InfoBox-Footer">
-                <a href="#" className="InfoBox-JoinBtn">{props.joinBtnLabel}</a>
-            </div>
-        </div>
+            </Title>
+            <Content>{props.children}</Content>
+            <Excerpt>{props.excerpt}</Excerpt>
+            <Footer>
+                <JoinButton href="#">{props.joinBtnLabel}</JoinButton>
+            </Footer>
+        </InfoBoxWrapper>
     );
 }
 

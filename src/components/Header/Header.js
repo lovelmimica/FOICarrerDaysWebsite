@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Logo from '../../assets/imges/logo.png';
-import './Header.scss';
+import {HeaderMain, HeaderContainer, LogoLink, LogoImage, NavList, NavItem, NavItemLink} from './HeaderStyle.js';
 
 const links = {
     speakers: 'Sudionici',
@@ -12,29 +11,23 @@ const links = {
 
 const Header = () => {
     return (
-        <header className="HeaderMain">
-            <div className="HeaderMain-Container">
-                <Link to="/" className="HeaderMain-LogoContainer">
-                    <img className="HeaderMain-Logo" src={Logo} alt="Logo" />
-                </Link>
-                <nav className="HeaderMain-Nav">
-                    <ul className="HeaderMain-NavList">
-                        <li className="HeaderMain-NavListItem">
-                            <Link className="HeaderMain-NavLink" to="/events">{links.events}</Link>
-                        </li>
-                        <li className="HeaderMain-NavListItem">
-                            <Link className="HeaderMain-NavLink" to="/speakers">{links.speakers}</Link>
-                        </li>
-                        <li className="HeaderMain-NavListItem">
-                            <Link className="HeaderMain-NavLink" to="/">{links.contact}</Link>
-                        </li>
-                        <li className="HeaderMain-NavListItem">
-                            <Link className="HeaderMain-NavLink" to="/">{links.login}</Link>
-                        </li>
-                    </ul>
+        <HeaderMain>
+            <HeaderContainer >
+                <LogoLink href="/" >
+                    <LogoImage src={Logo} alt="Logo" />
+                </LogoLink>
+                <nav>
+                    <NavList>
+                        <NavItem>
+                            <NavItemLink activeClassName='active' to="/events">{links.events}</NavItemLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavItemLink activeClassName='active' to="/speakers">{links.speakers}</NavItemLink>
+                        </NavItem>
+                    </NavList>
                 </nav>
-            </div>
-        </header>
+            </HeaderContainer>
+        </HeaderMain>
     );
 }
 

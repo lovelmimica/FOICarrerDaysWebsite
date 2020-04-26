@@ -1,17 +1,17 @@
 import React from 'react';
-import "./HeroSection.scss";
+import {Container, Data, Title, Host, Dates, ApplyButton} from './HeroSectionStyle.js';
 
 const HeroSection = () => {
     return(
-        <section className="HeroSection">
-            <div className="HeroSection-Container">
-                <div className="HeroSection-Data">
-                    <h3 className="HeroSection-Name">Tjedan karijera</h3>
-                    <h4 className="HeroSection-Host">FOI</h4>
-                    <p class="HeroSection-Dates">20.10.2020. - 16.10.2020.</p>
-                    <a href="#" className="HeroSection-ApplyBtn">PRIJAVI SE</a>
-                </div>
-            </div>
+        <section>
+            <Container>
+                <Data>
+                    <Title>Tjedan karijera</Title>
+                    <Host>FOI</Host>
+                    <Dates>20.10.2020. - 16.10.2020.</Dates>
+                    <ApplyButton href="#">PRIJAVI SE</ApplyButton>
+                </Data>
+            </Container>
         </section>
     );
 }

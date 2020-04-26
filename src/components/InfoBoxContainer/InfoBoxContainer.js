@@ -1,13 +1,13 @@
 import React from 'react';
-import './InfoBoxContainer.scss';
+import {Section, Grid} from './InfoBoxContainerStyle.js';
 
 const InfoBoxContainer = (props) => {
     return(
-        <section className="InfoBoxContainer">
-            <div className="InfoBoxContainer-Grid">
+        <Section>
+            <Grid>
                 {props.children}
-            </div>
-        </section>
+            </Grid>
+        </Section>
     );
 }
 

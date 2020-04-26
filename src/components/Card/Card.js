@@ -1,14 +1,14 @@
 import React from 'react';
-import './Card.scss'
+import {CardBody, CardFigure, CardImage, CartTitle} from './CardStyle.js';
 
 const Card = (props) => {
     return(
-        <a href='#' className="Card">
-            <figure className="Card-Figure">
-                <img className="Card-Image" src={props.image} alt={props.lat} />
-            </figure>
-            <p className="Card-Title">{props.children}</p>
-        </a>
+        <CardBody href='#' className="Card">
+            <CardFigure className="Card-Figure">
+                <CardImage className="Card-Image" src={props.image} alt={props.lat} />
+            </CardFigure>
+            <CartTitle className="Card-Title">{props.children}</CartTitle>
+        </CardBody>
     );
 }
 
