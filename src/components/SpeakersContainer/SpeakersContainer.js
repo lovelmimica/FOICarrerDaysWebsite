@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SpeakersData from '../../lib/speakers.js';
 import {Title} from './SpeakersConteinerStyle.js';
-
+import {getSpeakers} from '../../api/speakers';
 
 //Components
 import InfoBox from '../InfoBox/InfoBox';
@@ -18,12 +18,9 @@ const SpeakersContainer = (props) => {
     const [allSpeakers, setAllSpeakers] = useState(SpeakersData);
 
     useEffect(() => {
-        //TOD: Fetch real data
-        setTimeout(() =>{
-            console.log("Download finished");
-            setSpeakers(SpeakersData);
-            setDownloadFinished(true);
-        }, 1000);
+        getSpeakers(localStorage.getItem('bearerToken'))
+            .then(res => {setSpeakers(res.speakers); setAllSpeakers(res.speakers)})
+            .then(setDownloadFinished(true));
     }, []);
 
     const searchSpeakers = (query) => {

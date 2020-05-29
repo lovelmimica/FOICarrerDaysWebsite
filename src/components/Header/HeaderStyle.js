@@ -27,6 +27,7 @@ export const LogoImage = styled.img`
 export const NavList = styled.ul`
     display: flex;
     list-style-type: none;
+    align-items: center;
 `;
 
 export const NavItem = styled.li`
@@ -52,4 +53,15 @@ export const NavItemLink = styled(NavLink)`
     &.active{
         color: pink;
     }
+`;
+
+export const Logout = styled.li`
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    display: flex; 
+    align-items: center;
+    background-color: darkred;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
 `;

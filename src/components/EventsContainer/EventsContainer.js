@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EventsData from '../../lib/events.js';
 import {EventTitle, EventDateTime, DateTimeImage} from './EventsContainerStyle.js';
-
+import {getEvents} from '../../api/events';
 
 //Components
 import InfoBox from '../InfoBox/InfoBox';
@@ -17,20 +17,18 @@ import SearchBar from '../SearchBar/SearchBar';
 const EventsContainer = (props) =>{
     const [downloadFinished, setDownloadFinished] = useState(false);
     const [events, setEvents] = useState(0);
-    const [allEvents, setAllEvents] = useState(EventsData);
+    const [allEvents, setAllEvents] = useState(0);
  
     useEffect(() => {
-        //TODO: Fetch real data
-        setTimeout(() =>{
-                console.log("Download finished");
-                setEvents(EventsData);
-                setDownloadFinished(true);
-        }, 1000);
+        getEvents(localStorage.getItem('bearerToken'))
+            .then(res => {setEvents(res.events); setAllEvents(res.events)})
+            .then(setDownloadFinished(true));
     }, []);
 
     const searchEvents = (query) => {        
         let filteredEvents = new Array();
-        allEvents.forEach(element => {
+
+        if(allEvents) allEvents.forEach(element => {
             if(element.title.toLowerCase().includes(query.toLowerCase())){
                 filteredEvents.push(element);
             }
